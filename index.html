@@ -7,18 +7,67 @@
 <body>
 
   <script>
-  let choices = ['rock', 'paper', 'scissor'];
+  let choices = ['rock', 'paper', 'scissors'];
 
   function computerPlay(){
     // returns r p or s
+    let choice = Math.floor(Math.random()*choices.length);
+    return choices[choice];
   }
 
   function singleRound(playerSelection, computerSelection) {
     // prompt user for choice and compare with comp choice
+    switch(playerSelection.toLowerCase()) {
+      case 'rock':
+          switch(computerSelection) {
+            case 'rock':
+                console.log('It\'s a draw!');
+                break;
+            case 'paper':
+                console.log('You lose!');
+                break;
+            case 'scissors':
+                console.log('You win!');
+                break;
+          }
+          break;
+      case 'paper':
+        switch(computerSelection) {
+          case 'rock':
+              console.log('You win!');
+              break;
+          case 'paper':
+              console.log('It\'s a draw!');
+              break;
+          case 'scissors':
+              console.log('You lose!');
+              break;
+        }
+        break;
+      case 'scissors':
+        switch(computerSelection) {
+          case 'rock':
+              console.log('You lose!');
+              break;
+          case 'paper':
+              console.log('You win!');
+              break;
+          case 'scissors':
+              console.log('It\'s a draw!');
+              break;
+        }
+        break;
+    }
   }
 
-  const playerSelection = "rock";
+  let playerSelection = prompt('Rock, Paper or Scissors?');
+
+  // const playerSelection = "rock";
   const computerSelection = computerPlay();
+
+  console.log(`Player chose ${playerSelection}!`);
+  console.log(`Computer chose ${computerSelection}!`);
+  singleRound(playerSelection, computerSelection);
 
 
   </script>
